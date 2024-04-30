@@ -1,9 +1,11 @@
 import './App.css';
 
+import CoursesPage from './course/CoursePage';
+
 function App() {
   return (
     <>
-      <h1>Content</h1>
+      <CoursesPage />
     </>
   );
 }
