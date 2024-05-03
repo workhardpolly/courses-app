@@ -1,19 +1,39 @@
-export default function LessonContent({ currentLesson }) {
+import { useSelector } from 'react-redux';
+import YouTube from 'react-youtube';
+
+function getYoutubeVideoID(link: string = ''): string | null {
+  const regex =
+    /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+
+  const match = link.match(regex);
+
+  if (match && match[1]) {
+    return match[1];
+  } else {
+    return null;
+  }
+}
+
+export default function LessonContent() {
+  const currentLessonData = useSelector((state) => state);
   // This module will show the video preview and notes
 
-  function getYoutubeVideoLink(link: string = currentLesson): string {
-    const indexStart = link.search(/=/);
-    const indexEnd = link.search(/&/);
-    const videoID = link.slice(indexStart + 1, indexEnd);
-    console.log(`https://www.youtube.com/embed/${videoID}`);
-    return `https://www.youtube.com/embed/${videoID}`;
-  }
+  console.log(currentLessonData);
 
   return (
-    <div style={{ width: '70%', border: '1px dotted black', marginLeft: '10px', padding: '5px' }}>
+    <div
+      style={{
+        width: '70%',
+        height: '80vh',
+        border: '1px dotted black',
+        marginLeft: '10px',
+        padding: '5px',
+        position: 'sticky',
+        top: '5px',
+      }}>
       <div style={{ width: '100%', height: 'auto', margin: 'auto', textAlign: 'center' }}>
         Video Preview
-        {currentLesson}
+        {/* <YouTube videoId={getYoutubeVideoID(currentLessonData.youtube)} /> */}
       </div>
 
       <input type='checkbox'></input>

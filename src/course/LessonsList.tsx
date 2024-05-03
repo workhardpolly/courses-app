@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import LessonsListItem from './LessonsListItem';
 import fetchLessons from '../utils/fetchLessons';
+import { useDispatch } from 'react-redux';
+import { currentLesson } from '../redux-toolkit/lessonSlice';
+
 export type Lesson = {
   name: string;
   title: string;
@@ -14,9 +17,18 @@ export type Lesson = {
   youtube?: string;
   prerequisite?: string[];
   hometask?: string[];
+  notes?: string;
+  done?: boolean;
 };
 
 export default function LessonsList() {
+  const dispatch = useDispatch();
+  const handleChangeLesson = (event) => {
+    console.log(event.target.id);
+
+    dispatch(currentLesson(event.target.id));
+  };
+
   const [lessonsList, setLessonsList] = useState([]);
   const [isLoading, setIsloading] = useState(true);
 
@@ -26,6 +38,8 @@ export default function LessonsList() {
     fetchLessons(lessonsUrl).then((lessonsData: object) => setLessonsList(lessonsData.lessons));
     setIsloading(false);
   }, []);
+
+  console.log(lessonsList);
 
   return (
     <div style={{ width: '30%', border: '1px dotted blue', padding: '5px' }}>
@@ -37,7 +51,7 @@ export default function LessonsList() {
         <ul>
           {lessonsList.map((lesson: Lesson) => {
             return (
-              <li key={lesson.name} onClick={() => console.log(`you clicked lesson: ${lesson.name}`)}>
+              <li key={lesson.name} onClick={handleChangeLesson}>
                 <LessonsListItem lesson={lesson} />
               </li>
             );

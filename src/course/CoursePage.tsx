@@ -1,9 +1,10 @@
-import { useState } from 'react';
 import LessonContent from './LessonContent';
 import LessonsList from './LessonsList';
 
+// import { useSelector } from 'react-redux';
+
 export default function CoursesPage() {
-  const [currentLesson, setCurrnetLesson] = useState('https://www.youtube.com/watch?v=Cf8uCGTLnm4');
+  // const currentLessonData = useSelector((state) => state.lessonSlice.lessonData);
 
   return (
     <div style={{ border: '1px solid yellow' }}>
@@ -11,7 +12,7 @@ export default function CoursesPage() {
 
       <div style={{ display: 'flex', padding: '5px' }}>
         <LessonsList />
-        <LessonContent currentLesson={currentLesson} />
+        <LessonContent />
       </div>
     </div>
   );

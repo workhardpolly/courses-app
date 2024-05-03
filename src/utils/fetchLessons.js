@@ -4,6 +4,7 @@ export default function fetchLessons(link) {
     .then(async (res) => {
       const data = await res.json();
       if (res.ok) {
+        window.indexedDB;
         return data;
       } else {
         const error = {
