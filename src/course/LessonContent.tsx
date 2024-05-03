@@ -15,7 +15,7 @@ function getYoutubeVideoID(link: string = ''): string | null {
 }
 
 export default function LessonContent() {
-  const currentLessonData = useSelector((state) => state);
+  const currentLessonData = useSelector((state) => state.currentLessonSlice);
   // This module will show the video preview and notes
 
   console.log(currentLessonData);

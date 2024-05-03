@@ -4,12 +4,12 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import lessonsList from '../utils/lessons.json';
 
 export interface lessonsListState {
-  lessonData: object;
+  lessonsData: object;
 }
 const lessons = lessonsList.lessons;
 
 const initialState: lessonsListState = {
-  lessonData: lessons,
+  lessonsData: lessons,
 };
 
 export const lessonsSlice = createSlice({
@@ -19,17 +19,13 @@ export const lessonsSlice = createSlice({
     allLessons: (state, action) => {
       return state;
     },
-    currentLesson: (state, action: PayloadAction) => {
-      const currentLesson = lessons.filter((lessonItem) => lessonItem.name === action.payload)[0];
-
-      console.log(currentLesson);
-
-      return currentLesson;
+    addNote: (state, action) => {
+      return state;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { currentLesson } = lessonsSlice.actions;
+export const { allLessons, addNote } = lessonsSlice.actions;
 
 export default lessonsSlice.reducer;
