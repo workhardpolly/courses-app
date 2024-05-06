@@ -1,5 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import YouTube from 'react-youtube';
+import { addNote } from '../redux-toolkit/lessonsSlice';
+import { useState } from 'react';
 
 function getYoutubeVideoID(link: string = ''): string | null {
   const regex =
@@ -16,9 +18,25 @@ function getYoutubeVideoID(link: string = ''): string | null {
 
 export default function LessonContent() {
   const currentLessonData = useSelector((state) => state.currentLessonSlice);
+
+  console.log(currentLessonData.notes);
+
+  const [notes, setNotes] = useState(currentLessonData.notes);
   // This module will show the video preview and notes
 
-  console.log(currentLessonData);
+  console.log(notes);
+  const currentLessonName = currentLessonData.name;
+
+  const dispatch = useDispatch();
+
+  const handleSubmitNotes = (e) => {
+    e.preventDefault();
+    console.log([currentLessonName, e.target[0].value]);
+
+    dispatch(addNote([currentLessonName, e.target[0].value]));
+
+    setNotes('');
+  };
 
   return (
     <div
@@ -32,14 +50,21 @@ export default function LessonContent() {
         top: '5px',
       }}>
       <div style={{ width: '100%', height: 'auto', margin: 'auto', textAlign: 'center' }}>
-        Video Preview
+        Lesson "{currentLessonData.title}" Preview
         {/* <YouTube videoId={getYoutubeVideoID(currentLessonData.youtube)} /> */}
       </div>
 
       <input type='checkbox'></input>
-      <span>completed</span>
+      <span>Completed</span>
       <p>Notes:</p>
-      <input></input>
+      <form onSubmit={handleSubmitNotes}>
+        <p>{currentLessonData.notes}</p>
+        <label>Notes for the lesson</label>
+        <textarea type='text' value={notes} onChange={(e) => setNotes(e.target.value)}></textarea>
+        <button type='submit'>Save notes</button>
+      </form>
     </div>
   );
 }
+
+// when sending note, it goes to state, but input doesn't clears up

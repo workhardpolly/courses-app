@@ -24,6 +24,7 @@ export type Lesson = {
 
 export default function LessonsList() {
   const dispatch = useDispatch();
+  const lessonsList = useSelector((state) => state.lessonsSlice.lessonsData);
 
   // const [lessonsList, setLessonsList] = useState([]);
   // const [isLoading, setIsloading] = useState(true);
@@ -34,8 +35,6 @@ export default function LessonsList() {
   //   fetchLessons(lessonsUrl).then((lessonsData: object) => setLessonsList(lessonsData.lessons));
   //   setIsloading(false);
   // }, []);
-
-  const lessonsList = useSelector((state) => state.lessonsSlice.lessonsData);
 
   console.log(lessonsList);
 
