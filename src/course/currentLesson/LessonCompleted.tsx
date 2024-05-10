@@ -1,6 +1,6 @@
 import { useSetDoneStatusMutation } from '../../redux-toolkit/api/apiSlice';
 
-export default function LessonCompleted({ completedStatus, changeCompletedStatus }) {
+export default function LessonCompleted({ completedStatus = false, changeCompletedStatus }) {
   console.log('completed has rendered', completedStatus);
 
   return (

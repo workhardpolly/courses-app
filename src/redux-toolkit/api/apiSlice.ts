@@ -16,10 +16,10 @@ export const apiSlice = createApi({
     }),
 
     addNote: builder.mutation({
-      query: (lesson) => ({
-        url: `/lessons/${lesson.id}`,
+      query: ({ lessonID, notes }) => ({
+        url: `/lessons/${lessonID}`,
         method: 'PATCH',
-        body: lesson,
+        body: { notes: notes },
       }),
       invalidatesTags: ['Lessons'],
     }),

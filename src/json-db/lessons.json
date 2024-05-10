@@ -30,8 +30,8 @@
       ],
       "hidden": true,
       "id": "5188",
-      "completed": false,
-      "notes": "151515"
+      "completed": true,
+      "notes": " qwewqdasdas"
     },
     {
       "name": "react-intro",
@@ -71,8 +71,8 @@
       ],
       "youtube": "https://youtu.be/fQ_UNyQBiqg",
       "id": "91e2",
-      "notes": "412142",
-      "completed": true,
+      "notes": " qwewqe",
+      "completed": false,
       "value": true
     },
     {
@@ -125,7 +125,7 @@
       ],
       "youtube": "https://youtu.be/2r1TW9yPhlQ",
       "id": "d145",
-      "completed": false
+      "completed": true
     },
     {
       "name": "first-react-app-vite",

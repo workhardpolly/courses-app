@@ -16,12 +16,22 @@ import {
 export default function LessonContent() {
   const currentLessonID = useSelector((state) => state.currentLesson);
   const [dispatchCompletedStatus] = useSetCompletedStatusMutation();
+  const [dispatchNotes] = useAddNoteMutation();
 
   console.log('currentLessonID', currentLessonID);
 
-  const { data: currentLessonData, isLoading } = useGetCurrentLessonQuery(currentLessonID || 5188);
+  const { data: currentLessonData, isLoading: currentLessonDataIsLoading } = useGetCurrentLessonQuery(currentLessonID);
 
-  if (isLoading) return <div>Loading...</div>;
+  function changeCompletedStatus(e) {
+    dispatchCompletedStatus({ lessonID: currentLessonID, completed: e.target.checked });
+  }
+
+  function updateNotes(e) {
+    e.preventDefault();
+    dispatchNotes({ lessonID: currentLessonID, notes: e.target[0].value });
+  }
+
+  if (currentLessonDataIsLoading) return <div>Loading...</div>;
   if (!currentLessonData) return <div>Choose the lesson</div>;
 
   return (
@@ -42,13 +52,14 @@ export default function LessonContent() {
 
       <LessonCompleted
         completedStatus={currentLessonData.completed}
-        changeCompletedStatus={(e) =>
-          dispatchCompletedStatus({ lessonID: currentLessonID, completed: e.target.checked })
-        }
+        changeCompletedStatus={(e) => changeCompletedStatus(e)}
       />
 
       <LessonNotes
-      //  notes={notes} updateNotes={updateNotes}
+        notes={currentLessonData.notes}
+        updateNotes={(e) => {
+          updateNotes(e);
+        }}
       />
     </div>
   );
@@ -69,12 +80,12 @@ export default function LessonContent() {
 
 //   const [dispatchNote] = useAddNoteMutation();
 
-//   function changeCompletedStatus(e: Event) {
-//     const value = e.target.checked;
-//     setCompletedStatus(value);
-//     e.preventDefault();
-//     dispatchCompletedStatus({ ...currentLessonData, completed: value });
-//   }
+// function changeCompletedStatus(e: Event) {
+//   const value = e.target.checked;
+//   setCompletedStatus(value);
+//   e.preventDefault();
+//   dispatchCompletedStatus({ ...currentLessonData, completed: value });
+// }
 
 //   function updateNotes(e: Event) {
 //     e.preventDefault();
