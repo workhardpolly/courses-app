@@ -1,5 +1,5 @@
-import LessonContent from './LessonContent';
-import LessonsList from './LessonsList';
+import LessonContent from './currentLesson/LessonContent';
+import LessonsList from './lessonsList/LessonsList';
 
 // import { useSelector } from 'react-redux';
 

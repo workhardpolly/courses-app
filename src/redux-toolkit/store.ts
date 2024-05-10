@@ -1,9 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import lessonsSlice from './lessonsSlice';
-import currentLessonSlice from './currentLessonSlice';
+// import lessonsSlice from './lessonsSlice';
+import currentLessonReducer from './currentLessonSlice';
+import { apiSlice } from './api/apiSlice';
 
 export const store = configureStore({
-  reducer: { lessonsSlice, currentLessonSlice },
+  // reducer: { lessonsSlice, currentLessonSlice },
+  reducer: { currentLesson: currentLessonReducer, [apiSlice.reducerPath]: apiSlice.reducer },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

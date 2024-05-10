@@ -1,7 +1,9 @@
 import { Lesson } from './LessonsList';
+import { useEffect, useState } from 'react';
 
 export default function LessonsListItem(props: { lesson: Lesson }) {
   const lesson = props.lesson;
+
   return (
     <div id={lesson.name} style={{ border: '1px solid red', padding: '5px', marginTop: '5px' }}>
       <p
@@ -21,6 +23,7 @@ export default function LessonsListItem(props: { lesson: Lesson }) {
           Watch on YouTube
         </a>
       </p>
+      <label style={{ backgroundColor: `${lesson.completed ? 'green' : 'grey'}` }}>Lesson completed</label>
     </div>
   );
 }

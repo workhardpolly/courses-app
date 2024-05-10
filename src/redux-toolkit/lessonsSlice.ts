@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-import lessonsList from '../utils/lessons.json';
+// import lessonsList from '../utils/lessons.json';
 
 export interface lessonsListState {
   lessonsData: object[];
