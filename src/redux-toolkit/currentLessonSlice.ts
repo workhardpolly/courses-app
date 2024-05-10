@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface currentLessonState {
-  lessonData: object;
+  lessonData: string | null;
 }
 
 const initialState: currentLessonState = {
-  lessonData: {},
+  lessonData: '5188',
 };
 
 export const currentLessonSlice = createSlice({
@@ -14,20 +14,15 @@ export const currentLessonSlice = createSlice({
   initialState,
   reducers: {
     chooseLesson: (state, action) => {
-      // console.log(action.payload);
+      console.log(action.payload);
       // console.log(state);
 
       return action.payload;
-    },
-    updateLesson: (state, action) => {
-      const notes = action.payload;
-
-      return { ...state, notes };
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { chooseLesson, updateLesson } = currentLessonSlice.actions;
+export const { chooseLesson } = currentLessonSlice.actions;
 
 export default currentLessonSlice.reducer;

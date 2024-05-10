@@ -30,8 +30,8 @@
       ],
       "hidden": true,
       "id": "5188",
-      "completed": true,
-      "notes": "213123"
+      "completed": false,
+      "notes": "151515"
     },
     {
       "name": "react-intro",
@@ -72,7 +72,7 @@
       "youtube": "https://youtu.be/fQ_UNyQBiqg",
       "id": "91e2",
       "notes": "412142",
-      "completed": false,
+      "completed": true,
       "value": true
     },
     {

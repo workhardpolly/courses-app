@@ -9,6 +9,12 @@ export const apiSlice = createApi({
       query: () => '/lessons',
       providesTags: ['Lessons'],
     }),
+
+    getCurrentLesson: builder.query({
+      query: (lessonID) => ({ url: `lessons/${lessonID}` }),
+      providesTags: ['Lessons'],
+    }),
+
     addNote: builder.mutation({
       query: (lesson) => ({
         url: `/lessons/${lesson.id}`,
@@ -17,18 +23,20 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ['Lessons'],
     }),
+
     setCompletedStatus: builder.mutation({
-      query: (lesson) => ({
-        url: `/lessons/${lesson.id}`,
+      query: ({ lessonID, completed }) => ({
+        url: `/lessons/${lessonID}`,
         method: 'PATCH',
-        body: lesson,
+        body: { completed: completed },
       }),
       invalidatesTags: ['Lessons'],
     }),
   }),
 });
 
-export const { useGetLessonsQuery, useAddNoteMutation, useSetCompletedStatusMutation } = apiSlice;
+export const { useGetLessonsQuery, useGetCurrentLessonQuery, useAddNoteMutation, useSetCompletedStatusMutation } =
+  apiSlice;
 
 // type Api = {
 //   // Redux integration

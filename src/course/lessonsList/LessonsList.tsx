@@ -42,7 +42,7 @@ export default function LessonsList() {
       <ol>
         {lessonsList.map((lesson: Lesson) => {
           return (
-            <li key={lesson.name} onClick={() => dispatch(chooseLesson(lesson))}>
+            <li key={lesson.name} onClick={() => dispatch(chooseLesson(lesson.id))}>
               <LessonsListItem lesson={lesson} />
             </li>
           );
