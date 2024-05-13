@@ -17,7 +17,7 @@ export default function LessonsListItem(props: { lesson: Lesson }) {
 
       <p>Type: {lesson.type}</p>
       <p>Short summary: {lesson.shortSummary}</p>
-      <p>
+      <div>
         {lesson.youtube ? (
           <a href={lesson.youtube} target='blank'>
             Watch on YouTube
@@ -25,7 +25,7 @@ export default function LessonsListItem(props: { lesson: Lesson }) {
         ) : (
           <p style={{ backgroundColor: 'pink', textAlign: 'center' }}>No video</p>
         )}
-      </p>
+      </div>
       <label style={{ backgroundColor: `${lesson.completed ? 'green' : 'grey'}` }}>Lesson completed</label>
     </div>
   );

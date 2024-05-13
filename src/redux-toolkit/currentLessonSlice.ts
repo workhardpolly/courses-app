@@ -1,19 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export interface currentLessonState {
-  lessonData: string | null;
-}
-
-const initialState: currentLessonState = {
-  lessonData: '5188',
-};
+const initialState = '5188';
 
 export const currentLessonSlice = createSlice({
   name: 'currentLessonReducer',
   initialState,
   reducers: {
-    chooseLesson: (state, action) => {
+    chooseLesson: (state: string, action: { payload: string }) => {
       console.log(action.payload);
       // console.log(state);
 
