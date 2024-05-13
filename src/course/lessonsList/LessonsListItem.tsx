@@ -1,5 +1,4 @@
-import { Lesson } from './LessonsList';
-import { useEffect, useState } from 'react';
+import type { Lesson } from './LessonsList';
 
 export default function LessonsListItem(props: { lesson: Lesson }) {
   const lesson = props.lesson;
@@ -19,9 +18,13 @@ export default function LessonsListItem(props: { lesson: Lesson }) {
       <p>Type: {lesson.type}</p>
       <p>Short summary: {lesson.shortSummary}</p>
       <p>
-        <a href={lesson.youtube} target='blank'>
-          Watch on YouTube
-        </a>
+        {lesson.youtube ? (
+          <a href={lesson.youtube} target='blank'>
+            Watch on YouTube
+          </a>
+        ) : (
+          <p style={{ backgroundColor: 'pink', textAlign: 'center' }}>No video</p>
+        )}
       </p>
       <label style={{ backgroundColor: `${lesson.completed ? 'green' : 'grey'}` }}>Lesson completed</label>
     </div>

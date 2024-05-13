@@ -31,7 +31,7 @@
       "hidden": true,
       "id": "5188",
       "completed": true,
-      "notes": " qwewqdasdas"
+      "notes": "12332\n"
     },
     {
       "name": "react-intro",
@@ -71,7 +71,7 @@
       ],
       "youtube": "https://youtu.be/fQ_UNyQBiqg",
       "id": "91e2",
-      "notes": " qwewqe",
+      "notes": "qwewqeasdasd",
       "completed": false,
       "value": true
     },
@@ -125,7 +125,7 @@
       ],
       "youtube": "https://youtu.be/2r1TW9yPhlQ",
       "id": "d145",
-      "completed": true
+      "completed": false
     },
     {
       "name": "first-react-app-vite",
@@ -137,7 +137,8 @@
         "Project structure",
         "Code examples"
       ],
-      "id": "c788"
+      "id": "c788",
+      "completed": false
     },
     {
       "title": "What is React Component",

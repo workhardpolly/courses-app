@@ -4,17 +4,27 @@ import LessonCompleted from './LessonCompleted';
 import YouTube from 'react-youtube';
 import getYoutubeVideoID from './../../utils/getYoutubeVideoID';
 import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+
 import {
   useAddNoteMutation,
   useGetCurrentLessonQuery,
   useSetCompletedStatusMutation,
 } from '../../redux-toolkit/api/apiSlice';
 
+const wrapperStyles = {
+  width: '70%',
+  height: '80vh',
+  border: '1px dotted black',
+  marginLeft: '10px',
+  padding: '5px',
+  position: 'sticky',
+  top: '5px',
+};
+
 // This module will show the video preview and notes
 
 export default function LessonContent() {
-  const currentLessonID = useSelector((state) => state.currentLesson);
+  const currentLessonID = useSelector((state): string => state.currentLesson);
   const [dispatchCompletedStatus] = useSetCompletedStatusMutation();
   const [dispatchNotes] = useAddNoteMutation();
 
@@ -31,23 +41,20 @@ export default function LessonContent() {
     dispatchNotes({ lessonID: currentLessonID, notes: e.target[0].value });
   }
 
-  if (currentLessonDataIsLoading) return <div>Loading...</div>;
-  if (!currentLessonData) return <div>Choose the lesson</div>;
+  if (currentLessonDataIsLoading) return <div style={wrapperStyles}>Loading...</div>;
+  if (!currentLessonData) return <div style={{ ...wrapperStyles, textAlign: 'center' }}>Choose the lesson</div>;
 
   return (
-    <div
-      style={{
-        width: '70%',
-        height: '80vh',
-        border: '1px dotted black',
-        marginLeft: '10px',
-        padding: '5px',
-        position: 'sticky',
-        top: '5px',
-      }}>
+    <div style={wrapperStyles}>
+      <div style={{ border: '1px dotted pink', textAlign: 'center' }}>
+        <h2>{currentLessonData.title}</h2>
+      </div>
       <div style={{ width: '100%', height: 'auto', margin: 'auto', textAlign: 'center' }}>
-        Lesson "{currentLessonData.title}" Preview
-        {/* <YouTube videoId={getYoutubeVideoID(currentLessonData.youtube)} /> */}
+        {currentLessonData.youtube ? (
+          <YouTube opts={{ width: '90%', height: '360px' }} videoId={getYoutubeVideoID(currentLessonData.youtube)} />
+        ) : (
+          <p style={{ backgroundColor: 'pink' }}>No video for this lesson</p>
+        )}
       </div>
 
       <LessonCompleted

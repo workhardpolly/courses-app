@@ -4,7 +4,9 @@ export default function LessonNotes({ notes = '', updateNotes }) {
 
   const [value, setValue] = useState(notes);
 
-  // doesn't clear the textarea when rerendering
+  useEffect(() => {
+    setValue(notes);
+  }, [notes]);
 
   return (
     <div>
