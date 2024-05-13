@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = '5188';
+const initialState = '7f41';
 
 export const currentLessonSlice = createSlice({
   name: 'currentLessonReducer',

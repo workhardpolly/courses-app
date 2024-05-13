@@ -24,6 +24,15 @@ export const apiSlice: Api = createApi({
       invalidatesTags: ['Lessons'],
     }),
 
+    deleteNote: builder.mutation({
+      query: ({ lessonID, notes }) => ({
+        url: `/lessons/${lessonID}`,
+        method: 'PATCH',
+        body: { notes: notes },
+      }),
+      invalidatesTags: ['Lessons'],
+    }),
+
     setCompletedStatus: builder.mutation({
       query: ({ lessonID, completed }) => ({
         url: `/lessons/${lessonID}`,
@@ -35,8 +44,13 @@ export const apiSlice: Api = createApi({
   }),
 });
 
-export const { useGetLessonsQuery, useGetCurrentLessonQuery, useAddNoteMutation, useSetCompletedStatusMutation } =
-  apiSlice;
+export const {
+  useGetLessonsQuery,
+  useGetCurrentLessonQuery,
+  useAddNoteMutation,
+  useDeleteNoteMutation,
+  useSetCompletedStatusMutation,
+} = apiSlice;
 
 type Api = {
   // Redux integration

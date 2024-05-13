@@ -32,13 +32,33 @@ export default function LessonContent() {
 
   const { data: currentLessonData, isLoading: currentLessonDataIsLoading } = useGetCurrentLessonQuery(currentLessonID);
 
-  function changeCompletedStatus(e) {
+  function changeCompletedStatus(e: Event) {
     dispatchCompletedStatus({ lessonID: currentLessonID, completed: e.target.checked });
   }
 
-  function updateNotes(e) {
+  function addNote(e: Event) {
     e.preventDefault();
-    dispatchNotes({ lessonID: currentLessonID, notes: e.target[0].value });
+    let notesToSubmit = [];
+    console.log('currentLessonNotes', currentLessonData.notes);
+
+    if (currentLessonData.notes) {
+      notesToSubmit = [...currentLessonData.notes, e.target[0].value];
+    } else notesToSubmit.push(e.target[0].value);
+
+    dispatchNotes({ lessonID: currentLessonID, notes: notesToSubmit });
+  }
+
+  function removeNote(targetIndex: number) {
+    console.log('targetindex', targetIndex);
+
+    const newNotes = currentLessonData.notes.filter((item, index) => index !== targetIndex);
+
+    console.log('newNotes', newNotes);
+
+    dispatchNotes({
+      lessonID: currentLessonID,
+      notes: newNotes,
+    });
   }
 
   if (currentLessonDataIsLoading) return <div style={wrapperStyles}>Loading...</div>;
@@ -63,10 +83,9 @@ export default function LessonContent() {
       />
 
       <LessonNotes
-        notes={currentLessonData.notes}
-        updateNotes={(e) => {
-          updateNotes(e);
-        }}
+        notes={currentLessonData.notes ? currentLessonData.notes : []}
+        addNote={(e) => addNote(e)}
+        removeNote={(e) => removeNote(e)}
       />
     </div>
   );

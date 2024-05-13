@@ -29,9 +29,11 @@
         ]
       ],
       "hidden": true,
-      "id": "5188",
-      "completed": true,
-      "notes": "12332\n"
+      "id": "7f41",
+      "notes": [
+        "blank\n"
+      ],
+      "completed": true
     },
     {
       "name": "react-intro",
@@ -70,10 +72,10 @@
         ]
       ],
       "youtube": "https://youtu.be/fQ_UNyQBiqg",
-      "id": "91e2",
-      "notes": "qwewqeasdasd",
-      "completed": false,
-      "value": true
+      "id": "9bdd",
+      "notes": [
+        "beee"
+      ]
     },
     {
       "title": "A New Project With Create-React-App",
@@ -124,8 +126,8 @@
         "Use npm start to start the an app locally or npm run build to build it for release"
       ],
       "youtube": "https://youtu.be/2r1TW9yPhlQ",
-      "id": "d145",
-      "completed": false
+      "id": "0a40",
+      "notes": []
     },
     {
       "name": "first-react-app-vite",
@@ -137,8 +139,7 @@
         "Project structure",
         "Code examples"
       ],
-      "id": "c788",
-      "completed": false
+      "id": "cb3c"
     },
     {
       "title": "What is React Component",
@@ -179,8 +180,7 @@
         "Components have lifecycle you can hook into"
       ],
       "youtube": "https://youtu.be/BPIeZqomYQw",
-      "id": "bdb7",
-      "completed": false
+      "id": "04c4"
     },
     {
       "title": "React and Props",
@@ -192,7 +192,7 @@
         "How to pass data into component",
         "How to take data from the component"
       ],
-      "id": "e0f5"
+      "id": "41ae"
     },
     {
       "title": "React and Hooks",
@@ -227,7 +227,7 @@
         "You can write your own hooks"
       ],
       "published": true,
-      "id": "0319"
+      "id": "c3d8"
     },
     {
       "title": "Building React Component",
@@ -273,7 +273,7 @@
         "Put the new component into the footer",
         "When clicked, it should log into the console next text: `redirecting user to the next {link}` where `{link}` should be a's href"
       ],
-      "id": "8e67"
+      "id": "d6a3"
     },
     {
       "title": "React - From CSS to CSSinJS",
@@ -312,7 +312,7 @@
       "hometask": [
         "Use CSS modules to style previously created application"
       ],
-      "id": "0334"
+      "id": "8384"
     },
     {
       "title": "Tracking Changes",
@@ -341,7 +341,7 @@
       ],
       "published": true,
       "hidden": true,
-      "id": "a8af"
+      "id": "30e9"
     },
     {
       "title": "Managing State in React",
@@ -393,7 +393,7 @@
       ],
       "published": true,
       "youtube": "https://youtu.be/2KTqbf31cLw",
-      "id": "d9be"
+      "id": "1e4c"
     },
     {
       "title": "Forms - Default Way and React-Hook-Forms",
@@ -423,7 +423,7 @@
         ]
       ],
       "youtube": "https://youtu.be/gwrMDwYLIWs",
-      "id": "d1b3"
+      "id": "b392"
     },
     {
       "title": "Routing in React",
@@ -457,7 +457,7 @@
         "React router supports a lot of handy options - params, nested view, default routes"
       ],
       "youtube": "https://youtu.be/D0Fkm63FoSY",
-      "id": "b20e"
+      "id": "0f57"
     },
     {
       "title": "React and Network",
@@ -490,7 +490,7 @@
         "Don't ignore errors"
       ],
       "youtube": "https://youtu.be/Tm6l612v2v0",
-      "id": "afd1"
+      "id": "350b"
     },
     {
       "title": "UI Libraries",
@@ -522,7 +522,7 @@
         "Material UI"
       ],
       "youtube": "https://youtu.be/4Dsgzk-GuX8",
-      "id": "5227"
+      "id": "90c1"
     },
     {
       "title": "Testing Your Code",
@@ -554,7 +554,7 @@
         ]
       ],
       "youtube": "https://youtu.be/ASI73nQ9zP8",
-      "id": "df6f"
+      "id": "f8a0"
     },
     {
       "title": "TypeScript For Beginners",
@@ -591,7 +591,7 @@
       ],
       "published": true,
       "youtube": "https://youtu.be/ND-XaEQ4VSk",
-      "id": "ad0a"
+      "id": "c6ba"
     },
     {
       "title": "How to: Pet Project",
@@ -613,7 +613,7 @@
         "For the first release - only must have features",
         "Plan to work day by day"
       ],
-      "id": "3a96"
+      "id": "497d"
     },
     {
       "name": "web-tools",
@@ -649,7 +649,7 @@
           "https://code.visualstudio.com/docs/editor/userdefinedsnippets"
         ]
       ],
-      "id": "049c"
+      "id": "7938"
     },
     {
       "name": "solid",
@@ -671,7 +671,8 @@
       "published": true,
       "youtube": "https://youtube.com/live/1D80PMHEBa0",
       "type": "Lecture",
-      "id": "3ab0"
+      "id": "8cb9",
+      "notes": []
     }
   ]
 }
