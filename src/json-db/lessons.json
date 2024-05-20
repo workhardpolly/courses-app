@@ -30,9 +30,7 @@
       ],
       "hidden": true,
       "id": "7f41",
-      "notes": [
-        "blank\n"
-      ],
+      "notes": [],
       "completed": true
     },
     {
@@ -73,9 +71,8 @@
       ],
       "youtube": "https://youtu.be/fQ_UNyQBiqg",
       "id": "9bdd",
-      "notes": [
-        "beee"
-      ]
+      "notes": [],
+      "completed": false
     },
     {
       "title": "A New Project With Create-React-App",
@@ -127,7 +124,8 @@
       ],
       "youtube": "https://youtu.be/2r1TW9yPhlQ",
       "id": "0a40",
-      "notes": []
+      "notes": [],
+      "completed": false
     },
     {
       "name": "first-react-app-vite",

@@ -7,7 +7,7 @@ export const currentLessonSlice = createSlice({
   initialState,
   reducers: {
     chooseLesson: (state: string, action: { payload: string }) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       // console.log(state);
 
       return action.payload;

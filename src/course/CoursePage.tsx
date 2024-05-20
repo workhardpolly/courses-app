@@ -1,5 +1,7 @@
+import { Container, Box, Typography, Stack, AppBar } from '@mui/material';
 import LessonContent from './currentLesson/LessonContent';
 import LessonsList from './lessonsList/LessonsList';
+import NavBar from './NavBar';
 
 // import { useSelector } from 'react-redux';
 
@@ -7,13 +9,14 @@ export default function CoursesPage() {
   // const currentLessonData = useSelector((state) => state.lessonSlice.lessonData);
 
   return (
-    <div style={{ border: '1px solid yellow' }}>
-      <h1>Content</h1>
-
-      <div style={{ display: 'flex', padding: '5px' }}>
-        <LessonsList />
+    <Box>
+      <NavBar />
+      <Stack direction='row' justifyContent='space-between' padding={2}>
+        <Box flex={2} sx={{ display: { xs: 'none', md: 'block' } }}>
+          <LessonsList />
+        </Box>
         <LessonContent />
-      </div>
-    </div>
+      </Stack>
+    </Box>
   );
 }

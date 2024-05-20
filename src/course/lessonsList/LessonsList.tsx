@@ -1,28 +1,11 @@
-import { useEffect, useState } from 'react';
 import LessonsListItem from './LessonsListItem';
 import { useGetLessonsQuery } from '../../redux-toolkit/api/apiSlice.ts';
 
-// import fetchLessons from '../utils/useFetch';
 import { useDispatch } from 'react-redux';
 import { chooseLesson } from '../../redux-toolkit/currentLessonSlice.ts';
-// import useFetch from '../utils/useFetch';
+import { Box, List, ListItem } from '@mui/material';
 
-export type Lesson = {
-  name: string;
-  title: string;
-  type: 'string';
-  published?: boolean;
-  links?: [string, string][];
-  hidden?: boolean;
-  shortSummary?: string;
-  keyPoints?: string[];
-  takeaways?: string[];
-  youtube?: string;
-  prerequisite?: string[];
-  hometask?: string[];
-  notes?: string;
-  done?: boolean;
-};
+import type { Lesson } from '../../utils/types.ts';
 
 export default function LessonsList() {
   // console.log(useGetLessonsQuery);
@@ -39,25 +22,31 @@ export default function LessonsList() {
     content = <p>Loading...</p>;
   } else if (isSuccess) {
     content = (
-      <ol>
+      <List>
         {lessonsList.map((lesson: Lesson) => {
           return (
-            <li key={lesson.name} onClick={() => dispatch(chooseLesson(lesson.id))}>
+            <ListItem
+              sx={{ margin: '1px', padding: '0px', width: '100%' }}
+              key={lesson.id}
+              onClick={() => dispatch(chooseLesson(lesson.id))}>
               <LessonsListItem lesson={lesson} />
-            </li>
+            </ListItem>
           );
         })}
-      </ol>
+      </List>
     );
   } else if (isError) {
     content = <p>{error}</p>;
   }
 
   return (
-    <div style={{ width: '30%', border: '1px dotted blue', padding: '5px' }}>
-      <p>Lessons list</p>
-      <p>This element designed to render the parsed pist of lessons</p>
+    <Box
+      flex={2}
+      p={1}
+
+      // sx={{ display: { xs: 'none', md: 'block' } }}
+    >
       {content}
-    </div>
+    </Box>
   );
 }

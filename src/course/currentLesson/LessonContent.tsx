@@ -5,32 +5,29 @@ import YouTube from 'react-youtube';
 import getYoutubeVideoID from './../../utils/getYoutubeVideoID';
 import { useSelector } from 'react-redux';
 
+import { Box, Typography } from '@mui/material';
 import {
   useAddNoteMutation,
   useGetCurrentLessonQuery,
   useSetCompletedStatusMutation,
 } from '../../redux-toolkit/api/apiSlice';
 
-const wrapperStyles = {
-  width: '70%',
-  height: '80vh',
-  border: '1px dotted black',
-  marginLeft: '10px',
-  padding: '5px',
-  position: 'sticky',
-  top: '5px',
-};
+import type { Lesson } from '../../utils/types';
 
 // This module will show the video preview and notes
 
 export default function LessonContent() {
+  interface GetCurrentLesson {
+    data: Lesson;
+    isLoading: boolean;
+  }
+
   const currentLessonID = useSelector((state): string => state.currentLesson);
   const [dispatchCompletedStatus] = useSetCompletedStatusMutation();
   const [dispatchNotes] = useAddNoteMutation();
 
-  console.log('currentLessonID', currentLessonID);
-
-  const { data: currentLessonData, isLoading: currentLessonDataIsLoading } = useGetCurrentLessonQuery(currentLessonID);
+  const { data: currentLessonData, isLoading: currentLessonDataIsLoading }: GetCurrentLesson =
+    useGetCurrentLessonQuery(currentLessonID);
 
   function changeCompletedStatus(e: Event) {
     dispatchCompletedStatus({ lessonID: currentLessonID, completed: e.target.checked });
@@ -39,7 +36,6 @@ export default function LessonContent() {
   function addNote(e: Event) {
     e.preventDefault();
     let notesToSubmit = [];
-    console.log('currentLessonNotes', currentLessonData.notes);
 
     if (currentLessonData.notes) {
       notesToSubmit = [...currentLessonData.notes, e.target[0].value];
@@ -49,11 +45,7 @@ export default function LessonContent() {
   }
 
   function removeNote(targetIndex: number) {
-    console.log('targetindex', targetIndex);
-
     const newNotes = currentLessonData.notes.filter((item, index) => index !== targetIndex);
-
-    console.log('newNotes', newNotes);
 
     dispatchNotes({
       lessonID: currentLessonID,
@@ -61,66 +53,40 @@ export default function LessonContent() {
     });
   }
 
-  if (currentLessonDataIsLoading) return <div style={wrapperStyles}>Loading...</div>;
-  if (!currentLessonData) return <div style={{ ...wrapperStyles, textAlign: 'center' }}>Choose the lesson</div>;
+  let lessonContent;
 
-  return (
-    <div style={wrapperStyles}>
-      <div style={{ border: '1px dotted pink', textAlign: 'center' }}>
-        <h2>{currentLessonData.title}</h2>
-      </div>
-      <div style={{ width: '100%', height: 'auto', margin: 'auto', textAlign: 'center' }}>
-        {currentLessonData.youtube ? (
-          <YouTube opts={{ width: '90%', height: '360px' }} videoId={getYoutubeVideoID(currentLessonData.youtube)} />
-        ) : (
-          <p style={{ backgroundColor: 'pink' }}>No video for this lesson</p>
-        )}
-      </div>
+  if (currentLessonDataIsLoading) {
+    lessonContent = <Box>Loading...</Box>;
+  } else if (!currentLessonData) {
+    lessonContent = <Box>Choose the lesson</Box>;
+  } else {
+    lessonContent = (
+      <Box flex={3} style={{ height: '80vh', position: 'sticky', top: '64px' }}>
+        <Typography variant='h3' textAlign='center' margin='10px'>
+          {currentLessonData.title}
+        </Typography>
 
-      <LessonCompleted
-        completedStatus={currentLessonData.completed}
-        changeCompletedStatus={(e) => changeCompletedStatus(e)}
-      />
+        <div style={{ width: '100%', height: 'auto', margin: 'auto', textAlign: 'center' }}>
+          {/* {currentLessonData.youtube ? (
+            <YouTube opts={{ width: '90%', height: '360px' }} videoId={getYoutubeVideoID(currentLessonData.youtube)} />
+          ) : (
+            <p style={{ backgroundColor: 'pink' }}>No video for this lesson</p>
+          )} */}
+        </div>
 
-      <LessonNotes
-        notes={currentLessonData.notes ? currentLessonData.notes : []}
-        addNote={(e) => addNote(e)}
-        removeNote={(e) => removeNote(e)}
-      />
-    </div>
-  );
+        <LessonCompleted
+          completedStatus={currentLessonData.completed}
+          changeCompletedStatus={(e) => changeCompletedStatus(e)}
+        />
+
+        <LessonNotes
+          notes={currentLessonData.notes ? currentLessonData.notes : []}
+          addNote={(e: Event) => addNote(e)}
+          removeNote={(targetIndex: number) => removeNote(targetIndex)}
+        />
+      </Box>
+    );
+  }
+
+  return lessonContent;
 }
-
-// when sending note, it goes to state, but input doesn't clears up
-
-// const currentLessonData = useSelector((state) => state.currentLesson);
-
-//   console.log('currentLessonData loaded', currentLessonData);
-
-//   const [completedStatus, setCompletedStatus] = useState(null);
-//   console.log('completedStatus', completedStatus);
-
-//   const [notes, setNotes] = useState(null);
-
-//   const [dispatchCompletedStatus] = useSetCompletedStatusMutation();
-
-//   const [dispatchNote] = useAddNoteMutation();
-
-// function changeCompletedStatus(e: Event) {
-//   const value = e.target.checked;
-//   setCompletedStatus(value);
-//   e.preventDefault();
-//   dispatchCompletedStatus({ ...currentLessonData, completed: value });
-// }
-
-//   function updateNotes(e: Event) {
-//     e.preventDefault();
-//     const notes = e.target[0].value;
-//     dispatchNote({ ...currentLessonData, notes });
-//   }
-
-//   useEffect(() => {
-//     setCompletedStatus(currentLessonData.completed);
-//     setNotes(currentLessonData.notes);
-//     console.log('useEffect worked');
-//   }, [currentLessonData.completed, currentLessonData.notes]);

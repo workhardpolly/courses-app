@@ -1,40 +1,50 @@
 import { FormEventHandler, useEffect, useState } from 'react';
+import { Button, TextField, Typography, Box } from '@mui/material';
+
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { Add } from '@mui/icons-material';
+
+// Types
+
+type RemoveNoteFunction = (targetIndex: number) => void;
 
 type Props = {
   notes: string[];
   addNote: FormEventHandler<object>;
-  removeNote: FormEventHandler<object>;
+  removeNote: RemoveNoteFunction;
 };
 
 export default function LessonNotes({ notes = [], addNote, removeNote }: Props) {
-  console.log('notes has rendered', notes);
-
   const [value, setValue] = useState(notes);
 
   useEffect(() => {
-    setValue('');
+    setValue(['']);
   }, [notes]);
 
   return (
-    <div>
+    <Box>
       <label>Notes:</label>
-      <ol>
+      <ul>
         {notes.map((note, index) => {
           return (
             <div
               key={index}
               style={{ border: '1px dotted brown ', margin: '5px', display: 'flex', justifyContent: 'space-between' }}>
-              <li>{note}</li>
-              <span onClick={() => removeNote(index)}>remove</span>
+              <li>{<Typography color='textPrimary'>{note}</Typography>}</li>
+              <Button onClick={() => removeNote(index)}>
+                <DeleteOutlineIcon />
+              </Button>
             </div>
           );
         })}
-      </ol>
+      </ul>
 
       <form onSubmit={addNote}>
-        <textarea required type='text' value={value} onChange={(e) => setValue(e.target.value)}></textarea>
-        <button type='submit'>Save notes</button>
+        <TextField required type='text' value={value} onChange={(e: Event) => setValue(e.target.value)}></TextField>
+        <Button startIcon={<Add />} type='submit' color='action' variant='contained'>
+          Save note
+        </Button>
       </form>
-    </div>
+    </Box>
   );
 }
