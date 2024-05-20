@@ -1,4 +1,4 @@
-import { FormEventHandler, useEffect, useState } from 'react';
+import { ChangeEvent, FormEventHandler, useEffect, useState } from 'react';
 import { Button, TextField, Typography, Box } from '@mui/material';
 
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
@@ -15,10 +15,10 @@ type Props = {
 };
 
 export default function LessonNotes({ notes = [], addNote, removeNote }: Props) {
-  const [value, setValue] = useState(notes);
+  const [value, setValue] = useState('');
 
   useEffect(() => {
-    setValue(['']);
+    setValue('');
   }, [notes]);
 
   return (
@@ -40,8 +40,12 @@ export default function LessonNotes({ notes = [], addNote, removeNote }: Props) 
       </ul>
 
       <form onSubmit={addNote}>
-        <TextField required type='text' value={value} onChange={(e: Event) => setValue(e.target.value)}></TextField>
-        <Button startIcon={<Add />} type='submit' color='action' variant='contained'>
+        <TextField
+          required
+          type='text'
+          value={value}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}></TextField>
+        <Button startIcon={<Add />} type='submit' color='primary' variant='contained'>
           Save note
         </Button>
       </form>

@@ -552,7 +552,8 @@
         ]
       ],
       "youtube": "https://youtu.be/ASI73nQ9zP8",
-      "id": "f8a0"
+      "id": "f8a0",
+      "completed": true
     },
     {
       "title": "TypeScript For Beginners",

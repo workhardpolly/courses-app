@@ -12,7 +12,7 @@ export default function CoursesPage() {
     <Box>
       <NavBar />
       <Stack direction='row' justifyContent='space-between' padding={2}>
-        <Box flex={2} sx={{ display: { xs: 'none', md: 'block' } }}>
+        <Box flex={{ md: 3, xl: 2 }} sx={{ display: { xs: 'none', md: 'block' } }}>
           <LessonsList />
         </Box>
         <LessonContent />

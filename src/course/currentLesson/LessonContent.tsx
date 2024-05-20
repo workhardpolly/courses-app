@@ -14,23 +14,21 @@ import {
 
 import type { Lesson } from '../../utils/types';
 
-// This module will show the video preview and notes
-
 export default function LessonContent() {
   interface GetCurrentLesson {
     data: Lesson;
     isLoading: boolean;
   }
 
-  const currentLessonID = useSelector((state): string => state.currentLesson);
+  const currentLessonID = useSelector((state: object): string => state.currentLesson);
   const [dispatchCompletedStatus] = useSetCompletedStatusMutation();
   const [dispatchNotes] = useAddNoteMutation();
 
   const { data: currentLessonData, isLoading: currentLessonDataIsLoading }: GetCurrentLesson =
     useGetCurrentLessonQuery(currentLessonID);
 
-  function changeCompletedStatus(e: Event) {
-    dispatchCompletedStatus({ lessonID: currentLessonID, completed: e.target.checked });
+  function changeCompletedStatus(newCompletedStatus: boolean) {
+    dispatchCompletedStatus({ lessonID: currentLessonID, completed: newCompletedStatus });
   }
 
   function addNote(e: Event) {
@@ -61,22 +59,24 @@ export default function LessonContent() {
     lessonContent = <Box>Choose the lesson</Box>;
   } else {
     lessonContent = (
-      <Box flex={3} style={{ height: '80vh', position: 'sticky', top: '64px' }}>
+      <Box flex={5} padding='10px' style={{ height: '90vh', position: 'sticky', top: '64px', overflowY: 'auto' }}>
         <Typography variant='h3' textAlign='center' margin='10px'>
           {currentLessonData.title}
         </Typography>
 
-        <div style={{ width: '100%', height: 'auto', margin: 'auto', textAlign: 'center' }}>
-          {/* {currentLessonData.youtube ? (
-            <YouTube opts={{ width: '90%', height: '360px' }} videoId={getYoutubeVideoID(currentLessonData.youtube)} />
-          ) : (
-            <p style={{ backgroundColor: 'pink' }}>No video for this lesson</p>
-          )} */}
-        </div>
+        {currentLessonData.youtube ? (
+          <YouTube
+            style={{ width: '100%', height: 'fit-content', margin: '0 auto' }}
+            opts={{ width: '100%', height: '400px' }}
+            videoId={getYoutubeVideoID(currentLessonData.youtube)}
+          />
+        ) : (
+          <p style={{ backgroundColor: 'pink', textAlign: 'center' }}>No video for this lesson</p>
+        )}
 
         <LessonCompleted
           completedStatus={currentLessonData.completed}
-          changeCompletedStatus={(e) => changeCompletedStatus(e)}
+          changeCompletedStatus={(newCompletedStatus) => changeCompletedStatus(newCompletedStatus)}
         />
 
         <LessonNotes

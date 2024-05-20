@@ -12,5 +12,5 @@ export type Lesson = {
   prerequisite?: string[];
   hometask?: string[];
   notes?: string;
-  done?: boolean;
+  completed?: boolean;
 };
