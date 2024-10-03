@@ -1,8 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+const BASE_URL = 'http://localhost';
+const BASE_PORT = '4000';
+
 export const apiSlice: Api = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:65065' }),
+  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL + ':' + BASE_PORT }),
   tagTypes: ['Lessons'],
   endpoints: (builder) => ({
     getLessons: builder.query({

@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEventHandler, useEffect, useState } from 'react';
-import { Button, TextField, Typography, Box } from '@mui/material';
+import { Button, TextField, Typography, Box, ListItem, List} from '@mui/material';
 
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { Add } from '@mui/icons-material';
@@ -24,28 +24,29 @@ export default function LessonNotes({ notes = [], addNote, removeNote }: Props) 
   return (
     <Box>
       <label>Notes:</label>
-      <ul>
+      <List>
         {notes.map((note, index) => {
           return (
-            <div
+            <ListItem
               key={index}
-              style={{ border: '1px dotted brown ', margin: '5px', display: 'flex', justifyContent: 'space-between' }}>
-              <li>{<Typography color='textPrimary'>{note}</Typography>}</li>
+              sx={{ border: '1px solid rgba(190,250,170,0.7)', borderRadius:'5px', margin: '5px', display: 'flex', justifyContent: 'space-between' }}>
+              {<Typography color='textPrimary' sx={{maxHeight:'250px',  overflow:'auto'}}>{note}</Typography>}
               <Button onClick={() => removeNote(index)}>
                 <DeleteOutlineIcon />
               </Button>
-            </div>
+            </ListItem>
           );
         })}
-      </ul>
+      </List>
 
       <form onSubmit={addNote}>
         <TextField
           required
           type='text'
           value={value}
+          sx={{width:'100%', margin: '5px'}}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}></TextField>
-        <Button startIcon={<Add />} type='submit' color='primary' variant='contained'>
+        <Button startIcon={<Add />} type='submit' color='primary' variant='contained' sx={{margin:"5px"}}>
           Save note
         </Button>
       </form>

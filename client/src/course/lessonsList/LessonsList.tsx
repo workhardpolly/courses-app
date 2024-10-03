@@ -1,4 +1,4 @@
-import LessonsListItem from './LessonsListItem';
+import LessonsListItem from './LessonsListItem.tsx';
 import { useGetLessonsQuery } from '../../redux-toolkit/api/apiSlice.ts';
 
 import { useDispatch } from 'react-redux';
@@ -13,8 +13,6 @@ export default function LessonsList() {
   const dispatch = useDispatch();
 
   const { data: lessonsList, isLoading, isSuccess, isError, error } = useGetLessonsQuery();
-
-  // const lessonsList = useFetch('http://localhost:65065/lessons').data;
 
   let content;
 
