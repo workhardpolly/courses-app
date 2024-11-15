@@ -1,4 +1,6 @@
 export type Lesson = {
+  _id: string;
+  id: string;
   name: string;
   title: string;
   type: string;

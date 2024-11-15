@@ -1,35 +1,92 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const allLessons = require('../src/lessons.json');
-const BASE_URL = '/lessons/';
-const lessonsList = allLessons.lessons;
+const BASE_URL = "/lessons/";
+
+// Used with local JSON DB
+const allLessons = require("../src/lessons.json");
+const initialLessonsList = allLessons.lessons;
+
+const schemas = require("../models/schemas");
+
+// Post initially a lessons list to the DB
+
+async (req, res) => {
+  try {
+    const LessonsDB = schemas.Lessons;
+    const lessonsList = await LessonsDB.find({});
+    if (!lessonsList) {
+      initialLessonsList.map(async (lessonData, index) => {
+        console.log(index, lessonData);
+
+        const lessonsToSend = await schemas.Lessons.create(lessonData);
+
+        console.log(lessonsToSend);
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error retrieving lessons");
+  }
+};
 
 // Get lessons list
 
-router.get(BASE_URL, (req, res) => {
-  console.log(lessonsList);
-  res.send(lessonsList);
+router.get(BASE_URL, async (req, res) => {
+  try {
+    const LessonsDB = schemas.Lessons;
+    const lessonsList = await LessonsDB.find({});
+    res.send(lessonsList);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error retrieving lessons");
+  }
 });
 
 // Get current lesson
 
-router.get(`${BASE_URL}:id`, (req, res) => {
+router.get(`${BASE_URL}:id`, async (req, res) => {
   const {
     params: { id },
   } = req;
 
-  const resLesson = lessonsList.filter((lesson) => lesson.id === id);
+  const lesson = schemas.Lessons;
 
-  res.send(resLesson[0]);
+  const lessonData = await lesson.findById(`${id}`).exec();
+
+  // Used with local JSON DB
+  // const resLesson = lessonsList.filter((lesson) => lesson.id === id);
+
+  res.send(lessonData);
 });
 
 // Patch completed status
 
-router.patch(`${BASE_URL}:id`, (req, res) => {
+router.patch(`${BASE_URL}:id`, async (req, res) => {
   const {
     body,
     params: { id },
   } = req;
+
+  console.log(id, "body:", body);
+
+  const lesson = schemas.Lessons;
+  const lessonData = await lesson.findById(`${id}`).exec();
+
+  const { notes, completed } = body;
+
+  if (notes) {
+    lessonData.notes = notes;
+    await lessonData.save();
+    console.log("notes:", notes);
+  }
+
+  if (completed != null) {
+    lessonData.completed = completed;
+    console.log("completed:", completed);
+    await lessonData.save();
+  }
+
+  return res.status(200).send();
 
   // for (let key in body) {
 
@@ -41,16 +98,18 @@ router.patch(`${BASE_URL}:id`, (req, res) => {
   //   }
   // }
 
-  const lessonIndex = lessonsList.findIndex((lesson) => lesson.id === id);
+  // Used with local JSON DB
 
-  if (lessonIndex === -1) {
-    return res.status(404).send('Lesson not found');
-  }
-
-  console.log('current', lessonsList[lessonIndex]);
-  lessonsList[lessonIndex] = { ...lessonsList[lessonIndex], ...body };
-
-  return res.sendStatus(200).send('OK');
+  //      const lessonIndex = lessonsList.findIndex((lesson) => lesson.id === id);
+  //
+  //      if (lessonIndex === -1) {
+  //        return res.status(404).send("Lesson not found");
+  //      }
+  //
+  //      console.log("current", lessonsList[lessonIndex]);
+  //      lessonsList[lessonIndex] = { ...lessonsList[lessonIndex], ...body };
+  //
+  //      return res.sendStatus(200).send("OK");
 
   // allLessons.lessons.map((lesson) => {
   //   if (lesson.id === id) {

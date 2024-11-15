@@ -1,9 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = '7f41';
+const initialState = "";
 
 export const currentLessonSlice = createSlice({
-  name: 'currentLessonReducer',
+  name: "currentLessonReducer",
   initialState,
   reducers: {
     chooseLesson: (state: string, action: { payload: string }) => {

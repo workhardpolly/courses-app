@@ -1,18 +1,24 @@
-import LessonsListItem from './LessonsListItem.tsx';
-import { useGetLessonsQuery } from '../../redux-toolkit/api/apiSlice.ts';
+import LessonsListItem from "./LessonsListItem.tsx";
+import { useGetLessonsQuery } from "../../redux-toolkit/api/apiSlice.ts";
 
-import { useDispatch } from 'react-redux';
-import { chooseLesson } from '../../redux-toolkit/currentLessonSlice.ts';
-import { Box, List, ListItem } from '@mui/material';
+import { useDispatch } from "react-redux";
+import { chooseLesson } from "../../redux-toolkit/currentLessonSlice.ts";
+import { Box, List, ListItem } from "@mui/material";
 
-import type { Lesson } from '../../utils/types.ts';
+import type { Lesson } from "../../utils/types.ts";
 
 export default function LessonsList() {
   // console.log(useGetLessonsQuery);
 
   const dispatch = useDispatch();
 
-  const { data: lessonsList, isLoading, isSuccess, isError, error } = useGetLessonsQuery();
+  const {
+    data: lessonsList,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetLessonsQuery();
 
   let content;
 
@@ -24,9 +30,10 @@ export default function LessonsList() {
         {lessonsList.map((lesson: Lesson) => {
           return (
             <ListItem
-              sx={{ margin: '1px', padding: '0px', width: '100%' }}
-              key={lesson.id}
-              onClick={() => dispatch(chooseLesson(lesson.id))}>
+              sx={{ margin: "1px", padding: "0px", width: "100%" }}
+              key={lesson._id}
+              onClick={() => dispatch(chooseLesson(lesson._id))}
+            >
               <LessonsListItem lesson={lesson} />
             </ListItem>
           );

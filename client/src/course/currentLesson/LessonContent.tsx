@@ -23,6 +23,8 @@ export default function LessonContent() {
   const currentLessonID = useSelector(
     (state: object): string => state.currentLesson
   );
+  console.log("lesson id:", currentLessonID);
+
   const [dispatchCompletedStatus] = useSetCompletedStatusMutation();
   const [dispatchNotes] = useAddNoteMutation();
 
@@ -63,9 +65,37 @@ export default function LessonContent() {
   let lessonContent;
 
   if (currentLessonDataIsLoading) {
-    lessonContent = <Box>Loading...</Box>;
-  } else if (!currentLessonData) {
-    lessonContent = <Box>Choose the lesson</Box>;
+    lessonContent = (
+      <Box
+        flex={5}
+        padding="10px"
+        style={{
+          height: "90vh",
+          position: "sticky",
+          top: "64px",
+          overflowY: "auto",
+          textAlign: "center",
+        }}
+      >
+        Loading...
+      </Box>
+    );
+  } else if (!currentLessonID) {
+    lessonContent = (
+      <Box
+        flex={5}
+        padding="10px"
+        style={{
+          height: "90vh",
+          position: "sticky",
+          top: "64px",
+          overflowY: "auto",
+          textAlign: "center",
+        }}
+      >
+        Choose the lesson
+      </Box>
+    );
   } else {
     lessonContent = (
       <Box
