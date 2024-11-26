@@ -2,39 +2,44 @@ const express = require("express");
 const router = express.Router();
 const BASE_URL = "/lessons/";
 
-// Used with local JSON DB
+// Initial data for DB
 const allLessons = require("../src/lessons.json");
 const initialLessonsList = allLessons.lessons;
 
 const schemas = require("../models/schemas");
+const mongoose = require("mongoose");
 
-// Post initially a lessons list to the DB
-
-async (req, res) => {
+// Post lessons list to the DB if DB is empty
+async function isDBEmpty() {
   try {
     const LessonsDB = schemas.Lessons;
-    const lessonsList = await LessonsDB.find({});
-    if (!lessonsList) {
-      initialLessonsList.map(async (lessonData, index) => {
-        console.log(index, lessonData);
 
-        const lessonsToSend = await schemas.Lessons.create(lessonData);
+    await LessonsDB.countDocuments({}).then((count) => {
+      // console.log("lessonscount", count);
 
-        console.log(lessonsToSend);
-      });
-    }
+      if (count === 0) {
+        initialLessonsList.map(async (lessonData) => {
+          console.log(lessonData);
+
+          await schemas.Lessons.create(lessonData);
+
+          // console.log(lessonsToSend);
+        });
+      }
+    });
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Error retrieving lessons");
+    console.error("error, when connecting to DB", error);
   }
-};
+}
+
+isDBEmpty();
 
 // Get lessons list
 
 router.get(BASE_URL, async (req, res) => {
   try {
     const LessonsDB = schemas.Lessons;
-    const lessonsList = await LessonsDB.find({});
+    const lessonsList = await LessonsDB.find({}).sort({ counter: 1 });
     res.send(lessonsList);
   } catch (error) {
     console.error(error);

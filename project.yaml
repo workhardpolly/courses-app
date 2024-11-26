@@ -1,0 +1,51 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=default_password
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=default_password
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+    depends_on:
+      - mongodb
+
+  courses-app-server:
+    image: courses-app-server:1.0
+    container_name: courses-app-server
+    ports:
+      - 4000:4000
+    depends_on:
+      mongodb:
+        condition: service_healthy # Waits for MongoDB to be ready
+    environment:
+      - DB_HOST=mongodb
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4000"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  courses-app-client:
+    image: courses-app-client:1.0
+    container_name: courses-app-client
+    ports:
+      - 8080:8080
+    depends_on:
+      - courses-app-server

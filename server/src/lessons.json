@@ -7,29 +7,14 @@
       "type": "Lecture",
       "published": true,
       "links": [
-        [
-          "YouTube",
-          "https://www.youtube.com/channel/UCg-txtmOEQ8BniR8008O1mA"
-        ],
-        [
-          "Telegram",
-          "https://t.me/reactbeginners"
-        ],
-        [
-          "GitHub",
-          "https://github.com/Drag13/react-learning-course-short"
-        ],
-        [
-          "LinkedIn",
-          "https://www.linkedin.com/in/vitalii-ruban/"
-        ],
-        [
-          "Twitter",
-          "https://twitter.com/drag137"
-        ]
+        ["YouTube", "https://www.youtube.com/channel/UCg-txtmOEQ8BniR8008O1mA"],
+        ["Telegram", "https://t.me/reactbeginners"],
+        ["GitHub", "https://github.com/Drag13/react-learning-course-short"],
+        ["LinkedIn", "https://www.linkedin.com/in/vitalii-ruban/"],
+        ["Twitter", "https://twitter.com/drag137"]
       ],
       "hidden": true,
-      "id": "7f41",
+      "counter": "1",
       "notes": [],
       "completed": true
     },
@@ -52,14 +37,8 @@
       ],
       "published": true,
       "links": [
-        [
-          "Documentation",
-          "https://reactjs.org/docs/getting-started.html"
-        ],
-        [
-          "React - source code",
-          "https://github.com/facebook/react"
-        ],
+        ["Documentation", "https://reactjs.org/docs/getting-started.html"],
+        ["React - source code", "https://github.com/facebook/react"],
         [
           "React changelog",
           "https://github.com/facebook/react/blob/main/CHANGELOG.md"
@@ -70,7 +49,7 @@
         ]
       ],
       "youtube": "https://youtu.be/fQ_UNyQBiqg",
-      "id": "9bdd",
+      "counter": "2",
       "notes": [],
       "completed": false
     },
@@ -105,10 +84,7 @@
         "Commit and push the results with <i>git add .</i>, <i>git commit -m \"Initial commit\"</i>, <i>git push</i>"
       ],
       "links": [
-        [
-          "Create-React-App documentation",
-          "https://create-react-app.dev/"
-        ],
+        ["Create-React-App documentation", "https://create-react-app.dev/"],
         [
           "Create a new react app",
           "https://reactjs.org/docs/create-a-new-react-app.html"
@@ -123,7 +99,7 @@
         "Use npm start to start the an app locally or npm run build to build it for release"
       ],
       "youtube": "https://youtu.be/2r1TW9yPhlQ",
-      "id": "0a40",
+      "counter": "3",
       "notes": [],
       "completed": false
     },
@@ -137,7 +113,7 @@
         "Project structure",
         "Code examples"
       ],
-      "id": "cb3c"
+      "counter": "4"
     },
     {
       "title": "What is React Component",
@@ -152,10 +128,7 @@
         "Component lifecycle"
       ],
       "links": [
-        [
-          "Documentation",
-          "https://reactjs.org/docs/react-component.html"
-        ],
+        ["Documentation", "https://reactjs.org/docs/react-component.html"],
         [
           "Smart VS Dumb components",
           "https://medium.com/@thejasonfile/dumb-components-and-smart-components-e7b33a698d43"
@@ -178,7 +151,7 @@
         "Components have lifecycle you can hook into"
       ],
       "youtube": "https://youtu.be/BPIeZqomYQw",
-      "id": "04c4"
+      "counter": "5"
     },
     {
       "title": "React and Props",
@@ -190,7 +163,7 @@
         "How to pass data into component",
         "How to take data from the component"
       ],
-      "id": "41ae"
+      "counter": "6"
     },
     {
       "title": "React and Hooks",
@@ -210,10 +183,7 @@
           "Useful React Hooks",
           "https://www.smashingmagazine.com/2021/11/useful-react-hooks/"
         ],
-        [
-          "Hooks FAQ",
-          "https://reactjs.org/docs/hooks-faq.html"
-        ],
+        ["Hooks FAQ", "https://reactjs.org/docs/hooks-faq.html"],
         [
           "Code samples",
           "https://github.com/Drag13/react-hooks-examples/tree/master/src"
@@ -225,7 +195,7 @@
         "You can write your own hooks"
       ],
       "published": true,
-      "id": "c3d8"
+      "counter": "7"
     },
     {
       "title": "Building React Component",
@@ -271,7 +241,7 @@
         "Put the new component into the footer",
         "When clicked, it should log into the console next text: `redirecting user to the next {link}` where `{link}` should be a's href"
       ],
-      "id": "d6a3"
+      "counter": "8"
     },
     {
       "title": "React - From CSS to CSSinJS",
@@ -285,14 +255,8 @@
       ],
       "published": true,
       "links": [
-        [
-          "Css Modules",
-          "https://css-tricks.com/css-modules-part-1-need/"
-        ],
-        [
-          "Sass - css with superpowers",
-          "https://sass-lang.com/"
-        ],
+        ["Css Modules", "https://css-tricks.com/css-modules-part-1-need/"],
+        ["Sass - css with superpowers", "https://sass-lang.com/"],
         [
           "How to add SASS to React",
           "https://create-react-app.dev/docs/adding-a-sass-stylesheet/"
@@ -307,10 +271,8 @@
         ]
       ],
       "youtube": "https://www.youtube.com/watch?v=8al4xMhWWCE",
-      "hometask": [
-        "Use CSS modules to style previously created application"
-      ],
-      "id": "8384"
+      "hometask": ["Use CSS modules to style previously created application"],
+      "counter": "9"
     },
     {
       "title": "Tracking Changes",
@@ -324,14 +286,8 @@
         "Typical mistakes"
       ],
       "links": [
-        [
-          "State in React",
-          "https://reactjs.org/docs/faq-state.html"
-        ],
-        [
-          "Using the State Hook",
-          "https://reactjs.org/docs/hooks-state.html"
-        ],
+        ["State in React", "https://reactjs.org/docs/faq-state.html"],
+        ["Using the State Hook", "https://reactjs.org/docs/hooks-state.html"],
         [
           "Angular vs React - Change detection",
           "https://morioh.com/p/caccd1b76c5c"
@@ -339,7 +295,7 @@
       ],
       "published": true,
       "hidden": true,
-      "id": "30e9"
+      "counter": "10"
     },
     {
       "title": "Managing State in React",
@@ -356,26 +312,14 @@
         "Install MobX - <i>npm i mobx mobx-react-lite</i>"
       ],
       "links": [
-        [
-          "Context",
-          "https://reactjs.org/docs/context.html"
-        ],
-        [
-          "Redux",
-          "https://redux.js.org/"
-        ],
+        ["Context", "https://reactjs.org/docs/context.html"],
+        ["Redux", "https://redux.js.org/"],
         [
           "You might not need Redux",
           "https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367"
         ],
-        [
-          "Redux Toolkit",
-          "https://reduxtoolkit.js.org/"
-        ],
-        [
-          "MobX",
-          "https://mobx.js.org/react-integration.html"
-        ]
+        ["Redux Toolkit", "https://reduxtoolkit.js.org/"],
+        ["MobX", "https://mobx.js.org/react-integration.html"]
       ],
       "hometask": [
         "Using context write the timer that will have two buttons",
@@ -391,7 +335,7 @@
       ],
       "published": true,
       "youtube": "https://youtu.be/2KTqbf31cLw",
-      "id": "1e4c"
+      "counter": "11"
     },
     {
       "title": "Forms - Default Way and React-Hook-Forms",
@@ -407,21 +351,12 @@
         "Install <a href=\"https://react-hook-form.com/get-started\">React Hook Form</a> before the workshop"
       ],
       "links": [
-        [
-          "React forms - default way",
-          "https://reactjs.org/docs/forms.html"
-        ],
-        [
-          "React Hook Form",
-          "https://react-hook-form.com/get-started"
-        ],
-        [
-          "Yup",
-          "https://github.com/jquense/yup"
-        ]
+        ["React forms - default way", "https://reactjs.org/docs/forms.html"],
+        ["React Hook Form", "https://react-hook-form.com/get-started"],
+        ["Yup", "https://github.com/jquense/yup"]
       ],
       "youtube": "https://youtu.be/gwrMDwYLIWs",
-      "id": "b392"
+      "counter": "12"
     },
     {
       "title": "Routing in React",
@@ -455,32 +390,18 @@
         "React router supports a lot of handy options - params, nested view, default routes"
       ],
       "youtube": "https://youtu.be/D0Fkm63FoSY",
-      "id": "0f57"
+      "counter": "13"
     },
     {
       "title": "React and Network",
       "name": "react-network",
       "type": "Lecture",
-      "keyPoints": [
-        "Fetch",
-        "Axios",
-        "Network and store",
-        "Typical mistakes"
-      ],
+      "keyPoints": ["Fetch", "Axios", "Network and store", "Typical mistakes"],
       "published": true,
       "links": [
-        [
-          "Fetch",
-          "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"
-        ],
-        [
-          "Axios",
-          "https://github.com/axios/axios"
-        ],
-        [
-          "Public API",
-          "https://github.com/public-apis/public-apis"
-        ]
+        ["Fetch", "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"],
+        ["Axios", "https://github.com/axios/axios"],
+        ["Public API", "https://github.com/public-apis/public-apis"]
       ],
       "takeaways": [
         "Use fetch for a simple project and axios for middle/large",
@@ -488,39 +409,25 @@
         "Don't ignore errors"
       ],
       "youtube": "https://youtu.be/Tm6l612v2v0",
-      "id": "350b"
+      "counter": "14"
     },
     {
       "title": "UI Libraries",
       "name": "react-ui-lib",
       "published": true,
       "links": [
-        [
-          "Material",
-          "https://github.com/mui/material-ui"
-        ],
-        [
-          "Ant Design",
-          "https://github.com/ant-design/ant-design/"
-        ],
+        ["Material", "https://github.com/mui/material-ui"],
+        ["Ant Design", "https://github.com/ant-design/ant-design/"],
         [
           "React Bootstrap",
           "https://github.com/react-bootstrap/react-bootstrap"
         ],
-        [
-          "Bundlephobia",
-          "https://bundlephobia.com/"
-        ]
+        ["Bundlephobia", "https://bundlephobia.com/"]
       ],
       "type": "Lecture",
-      "keyPoints": [
-        "Purpose",
-        "Cons",
-        "How to choose",
-        "Material UI"
-      ],
+      "keyPoints": ["Purpose", "Cons", "How to choose", "Material UI"],
       "youtube": "https://youtu.be/4Dsgzk-GuX8",
-      "id": "90c1"
+      "counter": "15"
     },
     {
       "title": "Testing Your Code",
@@ -534,25 +441,19 @@
       ],
       "published": true,
       "links": [
-        [
-          "Testing Recipes",
-          "https://reactjs.org/docs/testing-recipes.html"
-        ],
+        ["Testing Recipes", "https://reactjs.org/docs/testing-recipes.html"],
         [
           "Create-React-App - testing",
           "https://create-react-app.dev/docs/running-tests/"
         ],
-        [
-          "Jest",
-          "https://jestjs.io/"
-        ],
+        ["Jest", "https://jestjs.io/"],
         [
           "React Testing Library",
           "https://testing-library.com/docs/react-testing-library/intro/"
         ]
       ],
       "youtube": "https://youtu.be/ASI73nQ9zP8",
-      "id": "f8a0",
+      "counter": "16",
       "completed": true
     },
     {
@@ -567,18 +468,12 @@
         "TypeAssertions"
       ],
       "links": [
-        [
-          "TS Playground",
-          "https://www.typescriptlang.org/play"
-        ],
+        ["TS Playground", "https://www.typescriptlang.org/play"],
         [
           "TS Handbook",
           "https://www.typescriptlang.org/docs/handbook/intro.html"
         ],
-        [
-          "TS Roadmap",
-          "https://github.com/microsoft/TypeScript/wiki/Roadmap"
-        ],
+        ["TS Roadmap", "https://github.com/microsoft/TypeScript/wiki/Roadmap"],
         [
           "tsconfig - documentation",
           "https://www.typescriptlang.org/docs/handbook/tsconfig-json.html"
@@ -590,7 +485,7 @@
       ],
       "published": true,
       "youtube": "https://youtu.be/ND-XaEQ4VSk",
-      "id": "c6ba"
+      "counter": "17"
     },
     {
       "title": "How to: Pet Project",
@@ -612,7 +507,7 @@
         "For the first release - only must have features",
         "Plan to work day by day"
       ],
-      "id": "497d"
+      "counter": "18"
     },
     {
       "name": "web-tools",
@@ -627,28 +522,16 @@
       "type": "Lecture",
       "published": true,
       "links": [
-        [
-          "EsLint",
-          "https://eslint.org/docs/latest/rules/"
-        ],
-        [
-          "Prettier",
-          "https://prettier.io/"
-        ],
-        [
-          "Husky and lint-staged",
-          "https://laurieontech.com/posts/husky/"
-        ],
-        [
-          "Emmet",
-          "https://docs.emmet.io/abbreviations/syntax/"
-        ],
+        ["EsLint", "https://eslint.org/docs/latest/rules/"],
+        ["Prettier", "https://prettier.io/"],
+        ["Husky and lint-staged", "https://laurieontech.com/posts/husky/"],
+        ["Emmet", "https://docs.emmet.io/abbreviations/syntax/"],
         [
           "Code Snippets",
           "https://code.visualstudio.com/docs/editor/userdefinedsnippets"
         ]
       ],
-      "id": "7938"
+      "counter": "19"
     },
     {
       "name": "solid",
@@ -670,7 +553,7 @@
       "published": true,
       "youtube": "https://youtube.com/live/1D80PMHEBa0",
       "type": "Lecture",
-      "id": "8cb9",
+      "counter": "20",
       "notes": []
     }
   ]
